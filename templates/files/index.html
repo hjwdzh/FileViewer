@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<html lang="en">
+
+
+
+<head>
+
+
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<title>Title Goes Here</title>
+
+
+
+</head>
+
+
+
+<body>
+<div style="margin-left:100px;margin-right:100px">
+<p>File Path: 
+{% for path in path_list %}
+	<a href="/files/{{path.url}}">{{path.name}}</a>/
+{% endfor %}
+</p>
+<hr/>
+
+<div>
+    <div style="width:200px;float:left;display:inline-block;border:1px solid black">
+
+<p> Directories: </p>
+<ul>
+{% for dir in directories %}
+	<li><a href="/files/{{current_path}}/{{dir}}">{{dir}}</a></li>
+{% endfor %}
+</ul>
+
+    </div>
+    <div style="margin-left:250px;width:800px;border:1px solid black">
+
+<p> Images: </p>
+<table style="border:1px solid black">
+{% for chunk in regular_files %}
+	<tr style="border:1px solid black">
+		{% for img in chunk %}
+			<td style="border:1px solid black" align="center">{{img}}</td>
+		{% endfor %}
+	</tr>
+	<tr>
+		{% for img in chunk %}
+			<td style="border:1px solid black" align="center"><img src="/getimg/{{current_path}}/{{img}}" height="100px"/></td>
+		{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+    </div>
+</div>
+
+</div>
+</body>
+
+
+
+</html>
